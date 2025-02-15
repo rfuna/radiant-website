@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Radiant AI Studio</title>
+    <style>
+        body {
+            background-color: black;
+            color: white;
+            font-family: sans-serif;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            padding: 20px;
+        }
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 15px; /* Space between logomark & logotype */
+            max-width: 80%;
+            flex-wrap: wrap; /* Allows stacking on small screens */
+            justify-content: center;
+        }
+        .logo-container img {
+            max-height: 100px; /* Ensures proportional size */
+            max-width: 100%;
+        }
+        .coming-soon {
+            font-size: 24px;
+            font-weight: bold;
+            margin-top: 20px;
+            color: white;
+            position: relative;
+        }
+
+        /* RESPONSIVE DESIGN */
+        @media (max-width: 768px) {
+            .logo-container {
+                flex-direction: column; /* Stacks logo and text on small screens */
+                gap: 10px;
+            }
+            .logo-container img {
+                max-height: 80px; /* Scale down logo size for smaller screens */
+            }
+            .coming-soon {
+                font-size: 20px; /* Adjust text size for mobile */
+                left: 0; /* Center it back for mobile */
+            }
+        }
+
+        @media (max-width: 480px) {
+            .logo-container img {
+                max-height: 60px; /* Reduce logo size further for small screens */
+            }
+            .coming-soon {
+                font-size: 18px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="logo-container">
+        <img src="logomark.png" alt="Radiant AI Studio Logomark">
+        <img src="logotype.png" alt="Radiant AI Studio Logotype">
+    </div>
+    <h1 class="coming-soon">COMING SOON...</h1>
+</body>
+</html>
