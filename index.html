@@ -5,9 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Radiant AI Studio</title>
     <style>
+        :root {
+            /* Easy‑to‑tweak glow colours */
+            --glow-start: #ff8c00; /* dark orange */
+            --glow-mid:   #ffd700; /* gold */
+        }
+
         body {
-            background-color: black;
-            color: white;
+            background-color: #000;
+            color: #fff;
             font-family: sans-serif;
             text-align: center;
             display: flex;
@@ -17,7 +23,9 @@
             height: 100vh;
             margin: 0;
             padding: 20px;
+            overflow: hidden; /* keep any oversized glow neatly cropped */
         }
+
         .logo-container {
             display: flex;
             align-items: center;
@@ -26,16 +34,63 @@
             flex-wrap: wrap; /* Allows stacking on small screens */
             justify-content: center;
         }
+
         .logo-container img {
             max-height: 100px; /* Ensures proportional size */
             max-width: 100%;
         }
+
+        /* Apply animation & transition only to the logomark (first image) */
+        .logo-container img:first-child {
+            animation: pulseGlow 3.5s ease-in-out infinite;
+            transition: transform 0.3s ease-out;
+        }
+
+        /* Pause animation + give a subtle lift on hover (optional) */
+        .logo-container:hover img {
+            animation-play-state: paused;
+        }
+
+        /* Apply hover scale only to the logomark (first image) */
+        .logo-container:hover img:first-child {
+            transform: scale(1.08);
+        }
+
+        @keyframes pulseGlow {
+            0% {
+                filter: drop-shadow(0 0 0px var(--glow-start));
+                transform: scale(1);
+            }
+            40% {
+                filter: drop-shadow(0 0 12px var(--glow-start)) drop-shadow(0 0 24px var(--glow-start));
+            }
+            50% {
+                filter: drop-shadow(0 0 16px var(--glow-mid)) drop-shadow(0 0 32px var(--glow-mid));
+                transform: scale(1.06);
+            }
+            60% {
+                filter: drop-shadow(0 0 12px var(--glow-mid)) drop-shadow(0 0 24px var(--glow-mid));
+            }
+            100% {
+                filter: drop-shadow(0 0 0px var(--glow-start));
+                transform: scale(1);
+            }
+        }
+
         .coming-soon {
             font-size: 24px;
             font-weight: bold;
             margin-top: 20px;
-            color: white;
+            color: #fff;
             position: relative;
+            /* Subtle glow so header matches vibe */
+            text-shadow: 0 0 6px var(--glow-start);
+            animation: textBlink 4s ease-in-out infinite;
+        }
+
+        @keyframes textBlink {
+            0%, 100% {opacity: 1;}
+            50% {opacity: 0.4;}
         }
 
         /* RESPONSIVE DESIGN */
